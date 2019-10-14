@@ -80,5 +80,8 @@ while game == True :
     else :
         game = False
         print("입력이 잘못되었습니다.")
-        
+
+
+
+
 print("학습이 종료됩니다.")
