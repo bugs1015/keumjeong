@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.image import imread #그림 파일 불러오기
-
 import random
+import pickle
 
 pic = ['갑주어_고생대_.PNG', '공룡_중생대_.PNG', '매머드_신생대_.PNG', '방추충_고생대_.PNG',
        '삼엽충_고생대_.PNG', '스트로마톨라이트_선캄브리아_.PNG', '암모나이트_중생대_.PNG', 
@@ -9,7 +9,17 @@ pic = ['갑주어_고생대_.PNG', '공룡_중생대_.PNG', '매머드_신생대
 
 player = {}
 
-<두 프로그램으로 나눠서 진행>
+file=open("savedata","wb")
+try:
+    file1=open("savedata","rb")
+    pickle.load(file1)
+    file1.close()
+except:
+    pickle.dump({'init':1}, file)
+file.close()
+
+file=open("savedata","rb")
+player = pickle.load(file)
 
 game = True
 
@@ -81,7 +91,8 @@ while game == True :
         game = False
         print("입력이 잘못되었습니다.")
 
-
-
+file=open("savedata","wb")
+pickle.dump(player, file)
+file.close()
 
 print("학습이 종료됩니다.")
